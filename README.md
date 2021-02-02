@@ -20,7 +20,7 @@ Projeto da disciplina de Tópicos em Computação II do curso de Bacharelado em 
 * [Rafael Paixão](https://github.com/Rapaix)
 * Raphael Campos
 * Wellington Santos
-* Yuri Souza
+* Yuri Melo
 
 ## Ambiente de desenvolvimento
 
