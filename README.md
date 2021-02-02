@@ -14,13 +14,13 @@ Projeto da disciplina de Tópicos em Computação II do curso de Bacharelado em 
 * Mostrar os dados obtidos com gráficos em páginas web utilizando D3.js
 
 ## Equipe
-* Francielma Assunção
+* [Francielma Assunção](https://github.com/FrancielmaA)
 * José Perdigão
 * [Pedro Sousa](https://github.com/SousaPedro11)
 * [Rafael Paixão](https://github.com/Rapaix)
 * Raphael Campos
 * Wellington Santos
-* Yuri Melo
+* [Yuri Melo](https://github.com/yurimses)
 
 ## Ambiente de desenvolvimento
 
