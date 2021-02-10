@@ -11,7 +11,7 @@ def index():
 
 @datalattes_bp.route('/home/', methods=['GET'])
 def home():
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 @datalattes_bp.route('/contato/', methods=['GET'])
