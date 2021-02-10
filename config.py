@@ -1,9 +1,13 @@
+import os
+
+
 class Config:
-    pass
+    THREADED = True
+    SECRET_KEY = os.environ.get('SECRET_KEY') or os.urandom(16)
 
 
 class Devlopment(Config):
-    pass
+    DEBUG = os.environ.get('FLASK_DEBUG', False)
 
 
 class Production(Config):
