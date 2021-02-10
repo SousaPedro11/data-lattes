@@ -92,3 +92,15 @@ O link da produção: [https://data-lattes.herokuapp.com/](https://data-lattes.h
 
 ## Estrutura do projeto Flask
 <img src=".github/img/estrutura_flask.png" alt="estrutura_flask">
+
+### Breve descrição
+* [.env](.env) e [.flaskenv](.flaskenv): arquivos de configuração das variáveis de ambiente
+* [config.py](config.py): arquivo com classes de configuração
+* [run.py](run.py): arquivo principal do flask, equivalente ao main.py
+* [app](app): diretório da aplicação flask.
+* [app/\__init\__.py](app/__init__.py): arquivo que contém a factory da aplicação flask
+* [app/datalattes](app/datalattes): diretório da Blueprint responsável pelo roteamento
+* [app/datalattes/\__init\__.py](app/datalattes/__init__.py): arquivo de definição da Blueprint
+* [app/datalattes/views.py](app/datalattes/views.py): contém a lógica do roteamento
+* [app/static](app/static): diretório que contém os diretórios dos arquivos estáticos da aplicação
+* [app/templates](app/templates): diretório que contém os .html das páginas
