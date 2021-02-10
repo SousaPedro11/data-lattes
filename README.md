@@ -72,17 +72,21 @@ Projeto da disciplina de Tópicos em Computação II do curso de Bacharelado em 
 
 
 ## Como executar
-* Padrão
+### Padrão
+Para acesso em [http://localhost:5000](http://localhost:5000)
 ```shell
 flask run
 ```
-* Gunicorn (standalone server - somente Linux)
+
+### Gunicorn (standalone server - somente Linux)
+Para acesso em [http://localhost:5000](http://localhost:5000)
 ```shell
 gunicorn --workers=5 --bind=0.0.0.0:5000 --access-logfile - --error-logfile - 'run:app'
 ```
 ou
+Para acesso em [http://localhost:8000](http://localhost:8000)
 ```shell
-gunicorn run:app
+gunicorn --workers=5 run:app
 ```
 
 ## Deploy (execução no Heroku)
