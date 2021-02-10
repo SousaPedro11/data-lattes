@@ -89,3 +89,6 @@ gunicorn run:app
 O deploy é automatizado, atualmente, utilizando a branch flask_develop.
 
 O link da produção: [https://data-lattes.herokuapp.com/](https://data-lattes.herokuapp.com/)
+
+## Estrutura do projeto Flask
+<img src=".github/img/estrutura_flask.png" alt="estrutura_flask">
