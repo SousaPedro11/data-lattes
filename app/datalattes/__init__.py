@@ -1,5 +1,2 @@
-from flask import Blueprint
-
-datalattes_bp = Blueprint('datalattes_bp', __name__)
-
+from .blueprint import datalattes_bp
 from . import views
