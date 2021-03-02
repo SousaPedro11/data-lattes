@@ -49,7 +49,7 @@ jobs:
     - name: 'Run PEP8'
       uses: quentinguidee/pep8-action@v1
       with:
-        arguments: '--exclude=./app/static/* --max-line-length=120'
+        arguments: '--exclude=./app/static/*,./coleta*,./create*,./download*,./rename* --max-line-length=120'
 
     - name: Test
       run: |
