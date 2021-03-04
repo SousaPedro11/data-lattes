@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<title>3.10 - Axes and labels</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- Custom styling -->
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<!-- Bootstrap grid setup -->
+	<div class="container">
+		<div class="row">
+			<div id="chart-area"></div>
+		</div>
+	</div>
+
+	<!-- External JS libraries -->
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<!-- Custom JS -->
+	<script src="js/main.js"></script>
+
+    <!-- Here we go.-->
+    
+    <script>
+    
+    const MARGIN = { LEFT: 100, RIGHT: 10, TOP: 10, BOTTOM: 130 }
+    const WIDTH = 600 - MARGIN.LEFT - MARGIN.RIGHT
+    const HEIGHT = 400 - MARGIN.TOP - MARGIN.BOTTOM
+    
+    const svg = d3.select("#chart-area").append("svg")
+      .attr("width", WIDTH + MARGIN.LEFT + MARGIN.RIGHT)
+      .attr("height", HEIGHT + MARGIN.TOP + MARGIN.BOTTOM)
+    
+    const g = svg.append("g")
+      .attr("transform", `translate(${MARGIN.LEFT}, ${MARGIN.TOP})`)
+    
+    // X label
+    g.append("text")
+      .attr("class", "x axis-label")
+      .attr("x", WIDTH / 2)
+      .attr("y", HEIGHT + 60)
+      .attr("font-size", "20px")
+      .attr("text-anchor", "middle")
+      .text("Artigos Publicados Ao Longo Dos Anos")
+    
+    // Y label
+    g.append("text")
+      .attr("class", "y axis-label")
+      .attr("x", - (HEIGHT / 2))
+      .attr("y", -60)
+      .attr("font-size", "20px")
+      .attr("text-anchor", "middle")
+      .attr("transform", "rotate(-90)")
+      .text("Quantidade")
+    
+    d3.csv("./articles_dataframe.csv").then(data => {
+      data.forEach(d => {
+        d.Quantidade = Number(d.Quantidade)
+      })
+    
+      const x = d3.scaleBand()
+        .domain(data.map(d => d.Ano))
+        .range([0, WIDTH])
+        .paddingInner(0.3)
+        .paddingOuter(0.2)
+      
+      const y = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d.Quantidade)])
+        .range([HEIGHT, 0])
+    
+      const xAxisCall = d3.axisBottom(x)
+      g.append("g")
+        .attr("class", "x axis")
+        .attr("transform", `translate(0, ${HEIGHT})`)
+        .call(xAxisCall)
+        .selectAll("text")
+          .attr("y", "10")
+          .attr("x", "-5")
+          .attr("text-anchor", "end")
+          .attr("transform", "rotate(-40)")
+    
+      const yAxisCall = d3.axisLeft(y)
+        .ticks(10)
+        .tickFormat(d => d)
+      g.append("g")
+        .attr("class", "y axis")
+        .call(yAxisCall)
+    
+      const rects = g.selectAll("rect")
+        .data(data)
+      
+      rects.enter().append("rect")
+        .attr("y", d => y(d.Quantidade))
+        .attr("x", (d) => x(d.Ano))
+        .attr("width", x.bandwidth)
+        .attr("height", d => HEIGHT - y(d.Quantidade))
+        .attr("fill", "steelblue")
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
