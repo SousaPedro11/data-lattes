@@ -5,13 +5,13 @@ import re
 def Main():
     # Opcional, utilizado para debug
     # pd.set_option("display.max_rows", None, "display.max_columns", None)
-    
+
     # Leitura inicial de dados
     df_data = pd.read_csv('export_dataframe.csv', low_memory=False)
-    
+
     # Dataframe onde serao usados os dados
     a = pd.DataFrame(data=df_data)
-    
+
     a1 = 1999
     a2 = 2021
     tabelaartsemdoi = []
@@ -20,9 +20,9 @@ def Main():
     tabelaartcomdoi2 = []
     tabelaorientacoes = []
     tabelaorientacoes2 = []
-    
+
     # Variável s separa os dados da quantidade e de artigos anuais.
-   
+
     a.drop_duplicates(subset=['Titulo'], keep='last', inplace=True)  # Remove artigos com nomes iguais
     s = a['Tipo'] + a['Ano']
     # Separa somente os artigos do dataframe das colunas Tipo e Ano, coloca em outro dataframe e soma [..]
@@ -36,19 +36,19 @@ def Main():
         tabelaartsemdoi2.append(a1)
         # print("Em {} foram publicados: ".format(a1), contagem_tmp, " Artigos")
         a1 += 1
-    
+
     a1 = 1999
     list_tmp = list(zip(tabelaartsemdoi2, tabelaartsemdoi))
     df2 = pd.DataFrame(list_tmp, columns=['Ano', 'Quantidade'])
-    
+
     # Salva o dataframe contendo Anos e Quantidade para um arquivo que vai ser lido pelo D3.JS
-    
+
     df2.to_csv(r'./articles_dataframe.csv', index=False, header=True)
-    
+
     # print('#######################################################################################')
-    
+
     # Separa os dados de artigos que possuem DOI.
-    
+
     s = a['Tipo'] + a['Ano'] + a['DOI']
     # Separa somente os artigos do dataframe das colunas Tipo e Ano, coloca em outro dataframe e soma [..]
     # [...] quantos resultados obtiveram por ano em um loop, onde é iniciado sempre em 1999 e acaba em 2021.
@@ -61,16 +61,16 @@ def Main():
         tabelaartcomdoi2.append(a1)
         # print("Em {} foram publicados com DOI: ".format(a1), contagem_tmp, " Artigos")
         a1 += 1
-    
+
     list_tmp = list(zip(tabelaartcomdoi2, tabelaartcomdoi))
     df3 = pd.DataFrame(list_tmp, columns=['Ano', 'Quantidade'])
-    
+
     # Salva o dataframe contendo Anos e Quantidade para um arquivo que vai ser lido pelo D3.JS
-    
+
     df3.to_csv(r'./articles_doi_dataframe.csv', index=False, header=True)
-    
+
     # Separa os dados de orientacoes completadas.
-    
+
     s = a['Tipo'] + a['Ano']
     a1 = 1999
     # print('#######################################################################################')
@@ -90,7 +90,7 @@ def Main():
         tabelaorientacoes2.append(a1)
         # print("Em {} houveram: ".format(a1), contagem_tmp, " Orientações")
         a1 += 1
-    
+
     list_tmp = list(zip(tabelaorientacoes2, tabelaorientacoes))
     df4 = pd.DataFrame(list_tmp, columns=['Ano', 'Quantidade'])
     df4.to_csv(r'./orientacoes_dataframe.csv', index=False, header=True)
