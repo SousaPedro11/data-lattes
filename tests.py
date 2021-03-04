@@ -20,20 +20,36 @@ class TestIntegridade(TestBase, unittest.TestCase):
         self.response = self.app.get('/')
         self.assertEqual(302, self.response.status_code)
 
+    def test_index_home_redirect(self):
+        self.response = self.app.get('/index/')
+        self.assertEqual(302, self.response.status_code)
+
     def test_home(self):
         self.response = self.app.get('/home/')
         self.assertEqual(200, self.response.status_code)
 
-    def test_indicadores(self):
-        self.response = self.app.get('/indicadores/')
+    # def test_indicadores(self):
+    #     self.response = self.app.get('/indicadores/')
+    #     self.assertEqual(200, self.response.status_code)
+    #
+    # def test_contato(self):
+    #     self.response = self.app.get('/contato/')
+    #     self.assertEqual(200, self.response.status_code)
+    #
+    # def test_sobre(self):
+    #     self.response = self.app.get('/sobre/')
+    #     self.assertEqual(200, self.response.status_code)
+
+    def test_vis1(self):
+        self.response = self.app.get('/vis1/')
         self.assertEqual(200, self.response.status_code)
 
-    def test_contato(self):
-        self.response = self.app.get('/contato/')
+    def test_vis2(self):
+        self.response = self.app.get('/vis2/')
         self.assertEqual(200, self.response.status_code)
 
-    def test_sobre(self):
-        self.response = self.app.get('/sobre/')
+    def test_vis3(self):
+        self.response = self.app.get('/vis3/')
         self.assertEqual(200, self.response.status_code)
 
     def test_not_found(self):
