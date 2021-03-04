@@ -10,7 +10,7 @@ Original file is located at
 import xml.etree.ElementTree as ET
 import os
 import glob
-#tree = ET.parse('/content/CurriculosXML')
+#tree = ET.parse('.\CurriculosXML')
 #root = tree.getroot()
 
 #Variáveis a serem levadas em conta para plotagem dos gráficos:

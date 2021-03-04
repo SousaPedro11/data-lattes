@@ -65,7 +65,7 @@ Projeto da disciplina de Tópicos em Computação II do curso de Bacharelado em 
     ```
   * No Windows
     ```
-    source .\venv\Scripts\activate
+    .\venv\Scripts\activate
     ```
 * instalar dependências
   * instalar dependencias com: ```pip install -r requirements.txt```
