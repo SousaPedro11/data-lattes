@@ -2,15 +2,14 @@ import pandas as pd
 import re
 
 
-def Main():
+def Main(dataframe):
     # Opcional, utilizado para debug
     # pd.set_option("display.max_rows", None, "display.max_columns", None)
 
     # Leitura inicial de dados
-    df_data = pd.read_csv('export_dataframe.csv', low_memory=False)
 
     # Dataframe onde serao usados os dados
-    a = pd.DataFrame(data=df_data)
+    a = pd.DataFrame(data=dataframe)
 
     a1 = 1999
     a2 = 2021
